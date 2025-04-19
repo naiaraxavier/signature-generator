@@ -12,6 +12,14 @@ export const validationSchemaForm = Yup.object().shape({
     .min(2, "Departamento deve ter pelo menos 2 caracteres"),
   phone: Yup.string()
     .required("Telefone é obrigatório")
-    .matches(/^[0-9]+$/, "Telefone deve conter apenas números")
-    .min(10, "Telefone deve ter pelo menos 10 dígitos"),
+    .test(
+      "valid-phone",
+      "Telefone deve estar no formato (00) 00000-0000 ou (00) 0000-0000",
+      (value) => {
+        if (!value) return false;
+        const mobilePattern = /^\(\d{2}\) \d{5}-\d{4}$/; // Celular
+        const landlinePattern = /^\(\d{2}\) \d{4}-\d{4}$/; // Comercial
+        return mobilePattern.test(value) || landlinePattern.test(value);
+      }
+    ),
 });

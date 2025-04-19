@@ -13,8 +13,12 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
     <>
       <Tabs defaultValue="preview" className="">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="preview">Visualização</TabsTrigger>
-          <TabsTrigger value="html-code">Código HTML</TabsTrigger>
+          <TabsTrigger value="preview" className="cursor-pointer">
+            Visualização
+          </TabsTrigger>
+          <TabsTrigger value="html-code" className="cursor-pointer">
+            Código HTML
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="preview" className="pt-4">
@@ -25,7 +29,7 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
         </TabsContent>
 
         <TabsContent value="html-code" className="pt-4">
-          <pre className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-md overflow-x-auto text-sm text-left">
+          <pre className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-md overflow-x-auto overflow-y-auto text-sm text-left max-h-80">
             <code>{signatureHTML}</code>
           </pre>
         </TabsContent>

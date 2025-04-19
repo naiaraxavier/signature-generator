@@ -1,9 +1,11 @@
-import { Formik, Field, useFormikContext } from "formik";
+import { useEffect } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { useEffect } from "react";
+import { formatPhone } from "@/lib/format-phone";
 import { FormValues } from "@/lib/interfaces/form-values";
+import { Formik, Field, useFormikContext, FieldProps } from "formik";
 import { validationSchemaForm } from "@/lib/validation/validation-schema";
+import { useUser } from "@/contexts/user-context";
 
 // Componente para atualizar valores em tempo real
 function AutoSave({
@@ -25,8 +27,10 @@ interface FormComponentProps {
 }
 
 export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
+  const { user } = useUser();
+
   const initialValues = {
-    fullName: "",
+    fullName: user?.name || "",
     role: "",
     department: "",
     phone: "",
@@ -120,14 +124,21 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
               <Label htmlFor="phone" className="text-sm font-medium">
                 Telefone <span className="text-red-500">*</span>
               </Label>
-              <Field
-                as={Input}
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Digite seu telefone (apenas números)"
-                className="w-full"
-              />
+              <Field name="phone">
+                {({ field, form }: FieldProps) => (
+                  <Input
+                    {...field}
+                    id="phone"
+                    type="tel"
+                    placeholder="(00) 00000-0000 ou (00) 0000-0000"
+                    className="w-full"
+                    onChange={(e) => {
+                      const formatted = formatPhone(e.target.value);
+                      form.setFieldValue("phone", formatted);
+                    }}
+                  />
+                )}
+              </Field>
               <p
                 className={`text-sm text-left mt-1 transition-all duration-300 h-5 ${
                   errors.phone && touched.phone

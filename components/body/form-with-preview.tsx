@@ -24,7 +24,7 @@ export function FormWithPreview() {
       </div>
 
       <div className="flex flex-col gap-12">
-        <div className="bg-gray-50 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[500px] h-[500px]">
+        <div className="bg-gray-50 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[500px] h-[400px]">
           <PreviewComponent values={formValues} />
         </div>
 
