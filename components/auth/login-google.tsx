@@ -25,7 +25,7 @@ export const LoginGoogle = () => {
           <span className="text-[16px]">Acessar com o Google</span>
         </Button>
         <span className="mt-3 text-[14px]">
-          * Somente colaboradores do AssinaID
+          * Somente colaboradores do AssineID
         </span>
       </form>
     </>

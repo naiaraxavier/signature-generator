@@ -1,15 +1,14 @@
-import { signOut } from "@/auth";
 import { Button } from "../ui/button";
+import { LogOutIcon } from "lucide-react";
+import { signoutGoogle } from "@/lib/actions/logout-google";
 
 export const LogoutGoogle = () => {
-  const signout = async () => {
-    "use server";
-    await signOut();
-  };
-
   return (
-    <form action={signout}>
-      <Button>Sair</Button>
+    <form action={signoutGoogle}>
+      <Button variant="ghost" className="cursor-pointer w-full">
+        <LogOutIcon />
+        Sair
+      </Button>
     </form>
   );
 };

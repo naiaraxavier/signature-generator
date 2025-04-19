@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { NavUser } from "./nav-user";
 import { useTheme } from "next-themes";
 import { ModeToggle } from "../theme/mode-toggle";
 
@@ -26,8 +27,9 @@ export const Header = () => {
           className="transition-opacity duration-300"
         />
       </div>
-      <div>
+      <div className="flex items-center gap-4 pr-4">
         <ModeToggle />
+        <NavUser />
       </div>
     </header>
   );
