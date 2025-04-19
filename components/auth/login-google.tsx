@@ -1,31 +1,33 @@
 import Image from "next/image";
-import { signIn } from "@/auth";
 import { Button } from "../ui/button";
+import { signinWithGoogle } from "@/lib/actions/login-google";
 
 export const LoginGoogle = () => {
-  const signin = async () => {
-    "use server";
-    await signIn("google");
-  };
-
   return (
     <>
-      <form action={signin}>
-        <Button type="submit">
+      <form
+        action={signinWithGoogle}
+        className="flex flex-col items-center gap-2"
+      >
+        <Button
+          type="submit"
+          size="lg"
+          // variant="secondary"
+          className="cursor-pointer"
+        >
           <Image
-            width={20}
-            height={20}
+            width={25}
+            height={25}
             alt="google"
             className="mr-2"
             src="/img/google.svg"
           />
-          Acessar com o Google
+          <span className="text-[16px]">Acessar com o Google</span>
         </Button>
+        <span className="mt-3 text-[14px]">
+          * Somente colaboradores do AssinaID
+        </span>
       </form>
-
-      <span className="mt-3 text-[14px]">
-        * Somente colaboradores do AssinaID
-      </span>
     </>
   );
 };

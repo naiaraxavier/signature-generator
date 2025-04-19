@@ -1,7 +1,7 @@
 "use server";
 
-import { signIn } from "next-auth/react";
+import { signIn } from "@/auth";
 
 export async function signinWithGoogle() {
-  await signIn("google");
+  await signIn("google", { redirectTo: "/" });
 }
