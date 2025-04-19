@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Loader } from "lucide-react";
 import { useUser } from "@/contexts/user-context";
 import { useRouter } from "next/navigation";
+import { Form } from "@/components/body/form";
 
 const HomePage = () => {
   const { resolvedTheme } = useTheme();
@@ -39,15 +40,29 @@ const HomePage = () => {
     <div className="flex flex-col items-center justify-items-center min-h-screen gap-10">
       <Header />
 
-      <main className="flex flex-col gap-[25px] row-start-2 items-center sm:items-start">
-        <div className="flex flex-col gap-6 text-center">
+      <main className="flex flex-col gap-[25px] row-start-2 items-center justify-center sm:items-start">
+        <section className="flex flex-col gap-6 text-center">
           <h1 className="text-2xl">Olá {user.name || "Visitante"}!</h1>
           <p>
             Crie sua assinatura de email profissional com links clicáveis para
             redes sociais e contatos. Preencha o formulário abaixo e copie o
             código HTML gerado.
           </p>
-        </div>
+        </section>
+
+        <section className="flex gap-6">
+          <div>
+            <Form />
+          </div>
+          <div className="flex flex-col gap-4">
+            <div>
+              <p>Visualização</p>
+            </div>
+            <div>
+              <p>Instruções</p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
