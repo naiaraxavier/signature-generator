@@ -18,13 +18,13 @@ export function FormWithPreview() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-12 md:gap-28 items-start">
+    <div className="flex flex-col md:flex-row gap-12 md:gap-18 items-start">
       <div className="bg-gray-50 dark:bg-[#18181B] p-8 rounded-lg shadow-md w-[480px] h-auto">
         <FormComponent onValuesChange={handleValuesChange} />
       </div>
 
-      <div className="flex flex-col gap-12">
-        <div className="bg-gray-50 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[500px] h-[400px]">
+      <div className="flex flex-col gap-6">
+        <div className="bg-gray-50 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[500px] h-[390px] ">
           <PreviewComponent values={formValues} />
         </div>
 

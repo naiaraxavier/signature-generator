@@ -16,7 +16,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="flex w-full items-center justify-between p-2 bg-gray-100 dark:bg-gray-900 shadow-md">
+    <header className="flex w-full items-center justify-between p-2 bg-gray-100 dark:bg-black shadow-md">
       <div className="p-2">
         <Image
           src={getLogoSrc()}

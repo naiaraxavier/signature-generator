@@ -7,6 +7,7 @@ import { Loader } from "lucide-react";
 import { useUser } from "@/contexts/user-context";
 import { useRouter } from "next/navigation";
 import { FormWithPreview } from "@/components/body/form-with-preview";
+import { Footer } from "@/components/footer/footer";
 
 const HomePage = () => {
   const { resolvedTheme } = useTheme();
@@ -55,9 +56,7 @@ const HomePage = () => {
         </section>
       </main>
 
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        {/* <p>Footer</p> */}
-      </footer>
+      <Footer />
     </div>
   );
 };
