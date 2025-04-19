@@ -5,7 +5,7 @@ import { LoginGoogle } from "@/components/auth/login-google";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Loader } from "lucide-react"; // ícone de loading
+import { Loader } from "lucide-react";
 
 export default function SignIn() {
   const { resolvedTheme } = useTheme();
@@ -16,7 +16,7 @@ export default function SignIn() {
   }, []);
 
   const getLogoSrc = () => {
-    if (!mounted || !resolvedTheme) return "/img/logo-dark.png"; // fallback
+    if (!mounted || !resolvedTheme) return "/img/logo-dark.png";
     return resolvedTheme === "dark"
       ? "/img/logo-dark.png"
       : "/img/logo-light.png";
