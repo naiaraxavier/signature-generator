@@ -73,7 +73,7 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
           <div
             ref={previewRef}
             dangerouslySetInnerHTML={{ __html: signatureHTML }}
-            className="bg-white p-6 rounded-md shadow max-h-[300px] max-w-full overflow-auto"
+            className="bg-white p-6 rounded-md shadow max-h-[270px] max-w-full overflow-auto"
           />
 
           <div className="flex items-center gap-2">

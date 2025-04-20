@@ -30,7 +30,7 @@ export const FormWithPreview = () => {
       </div>
 
       <div className="flex flex-col gap-6">
-        <div className="bg-gray-100 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[320px] md:w-[500px] h-[400px] max-h-[450px] ">
+        <div className="bg-gray-100 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[320px] md:w-[500px] h-[420px]">
           <PreviewComponent values={formValues} />
         </div>
 
