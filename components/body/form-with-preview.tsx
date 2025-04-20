@@ -1,11 +1,17 @@
 "use client";
 
+// * React and Next
 import { useState } from "react";
-import { FormComponent } from "./form-component";
-import { FormValues } from "@/lib/interfaces/form-values";
-import { PreviewComponent } from "./preview-component";
 
-export function FormWithPreview() {
+// * Lib
+import { FormValues } from "@/lib/interfaces/form-values";
+
+// * Components
+import { FormComponent } from "@/components/body/form-component";
+import { PreviewComponent } from "@/components/body/preview-component";
+
+// Component
+export const FormWithPreview = () => {
   const [formValues, setFormValues] = useState<FormValues>({
     fullName: "",
     role: "",
@@ -19,17 +25,17 @@ export function FormWithPreview() {
 
   return (
     <div className="flex flex-col md:flex-row gap-12 md:gap-18 items-start">
-      <div className="bg-gray-50 dark:bg-[#18181B] p-8 rounded-lg shadow-md w-[480px] h-auto">
+      <div className="bg-gray-100 dark:bg-[#18181B] p-8 rounded-lg shadow-md w-[320px] md:w-[500px] h-auto">
         <FormComponent onValuesChange={handleValuesChange} />
       </div>
 
       <div className="flex flex-col gap-6">
-        <div className="bg-gray-50 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[500px] h-[390px] ">
+        <div className="bg-gray-100 dark:bg-[#18181B] p-2 rounded-lg shadow-md w-[320px] md:w-[500px] h-[400px] max-h-[450px] ">
           <PreviewComponent values={formValues} />
         </div>
 
-        <div className="bg-[#a49de6] dark:bg-[#7064D7] p-6 rounded-lg shadow-md w-[500px] text-left">
-          <h2 className="text-lg">Como usar sua assinatura:</h2>
+        <div className="bg-[#a49de6] dark:bg-[#7064D7] p-6 rounded-lg shadow-md w-[320px] md:w-[500px] text-left text-sm">
+          <h2 className="font-bold">Como usar sua assinatura:</h2>
           <ol className="list-decimal pl-5 space-y-2 text-bas mt-6">
             <li>
               Clique em <strong>&quot;Copiar HTML&quot;</strong> ou{" "}
@@ -44,4 +50,4 @@ export function FormWithPreview() {
       </div>
     </div>
   );
-}
+};

@@ -16,6 +16,7 @@ import { Header } from "@/components/header/header";
 import { Footer } from "@/components/footer/footer";
 import { FormWithPreview } from "@/components/body/form-with-preview";
 
+// * Component
 const HomePage = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -46,12 +47,18 @@ const HomePage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-items-center min-h-screen gap-10">
+    <div className="flex flex-col items-center justify-between h-screen max-w-screen overflow-x-hidden">
       <Header />
 
-      <main className="flex flex-col gap-[25px] items-center justify-center w-full text-center">
-        <section className="flex flex-col gap-6">
-          <h1 className="text-2xl">Olá {user.name || "Visitante"}!</h1>
+      <main className="flex flex-col gap-10 items-center mt-6 w-full flex-1 mb-2">
+        <section className="flex flex-col gap-6 mx-6">
+          <h1 className="text-2xl font-bold">
+            Olá{" "}
+            <span className="dark:text-[#a49de6]">
+              {user.name || "Visitante"}
+            </span>{" "}
+            !
+          </h1>
           <p>
             Crie sua assinatura de email profissional com links clicáveis para
             redes sociais e contatos. Preencha o formulário abaixo e copie o

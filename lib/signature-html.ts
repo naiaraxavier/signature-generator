@@ -5,8 +5,13 @@ export const generateSignatureHTML = (values: FormValues) => {
   <table width="600" cellpadding="0" cellspacing="0" border="0" style="border-top: 3px solid #cccccc; border-bottom: 3px solid #cccccc; font-family: Arial, sans-serif; color: #333333; width: 100%; max-width: 600px;">
       <tr>
         <!-- Logo -->
-        <td width="160" valign="top" align="center" style="background-color: #fff; padding: 18px;">
-          <img src="https://image.similarpng.com/file/similarpng/very-thumbnail/2020/12/Lorem-ipsum-logo-isolated-clipart-PNG.png" alt="Logo da empresa" width="120" style="display: block; border-radius: 8px;" />
+        <td valign="top" align="center" style="background-color: #fff; padding: 18px; width: 160px; min-width: 160px;">
+          <img
+            src="https://image.similarpng.com/file/similarpng/very-thumbnail/2020/12/Lorem-ipsum-logo-isolated-clipart-PNG.png"
+            alt="Logo da empresa"
+            width="120"
+            style="display: block; border-radius: 8px; width: 120px; height: auto;"
+          />
         </td>
 
         <!-- Informações -->

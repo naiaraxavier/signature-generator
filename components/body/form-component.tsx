@@ -1,18 +1,28 @@
+// * React and Next
 import { useEffect } from "react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+
+//* Lib
 import { formatPhone } from "@/lib/format-phone";
 import { FormValues } from "@/lib/interfaces/form-values";
 import { Formik, Field, useFormikContext, FieldProps } from "formik";
 import { validationSchemaForm } from "@/lib/validation/validation-schema";
+
+// * Components
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { useUser } from "@/contexts/user-context";
 
-// Componente para atualizar valores em tempo real
-function AutoSave({
+// * Interface
+interface FormComponentProps {
+  onValuesChange: (values: FormValues) => void;
+}
+
+// Handle auto-saving of form values
+const AutoSave = ({
   onValuesChange,
 }: {
   onValuesChange: (values: FormValues) => void;
-}) {
+}) => {
   const { values } = useFormikContext<FormValues>();
 
   useEffect(() => {
@@ -20,12 +30,9 @@ function AutoSave({
   }, [values, onValuesChange]);
 
   return null;
-}
+};
 
-interface FormComponentProps {
-  onValuesChange: (values: FormValues) => void;
-}
-
+// Component
 export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
   const { user } = useUser();
 
@@ -52,7 +59,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
 
             <div className="space-y-2">
               <Label htmlFor="fullName" className="text-sm font-medium">
-                Nome Completo <span className="text-red-500">*</span>
+                Nome Completo <span className="text-red-400">*</span>
               </Label>
               <Field
                 as={Input}
@@ -64,7 +71,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
               <p
                 className={`text-sm text-left mt-1 transition-all duration-300 h-5 ${
                   errors.fullName && touched.fullName
-                    ? "text-red-500 opacity-100"
+                    ? "text-red-400 opacity-100"
                     : "opacity-0"
                 }`}
               >
@@ -76,7 +83,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
 
             <div className="space-y-2">
               <Label htmlFor="role" className="text-sm font-medium">
-                Cargo <span className="text-red-500">*</span>
+                Cargo <span className="text-red-400">*</span>
               </Label>
               <Field
                 as={Input}
@@ -88,7 +95,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
               <p
                 className={`text-sm text-left mt-1 transition-all duration-300 h-5 ${
                   errors.role && touched.role
-                    ? "text-red-500 opacity-100"
+                    ? "text-red-400 opacity-100"
                     : "opacity-0"
                 }`}
               >
@@ -98,7 +105,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
 
             <div className="space-y-2">
               <Label htmlFor="department" className="text-sm font-medium">
-                Departamento <span className="text-red-500">*</span>
+                Departamento <span className="text-red-400">*</span>
               </Label>
               <Field
                 as={Input}
@@ -110,7 +117,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
               <p
                 className={`text-sm text-left mt-1 transition-all duration-300 h-5 ${
                   errors.department && touched.department
-                    ? "text-red-500 opacity-100"
+                    ? "text-red-400 opacity-100"
                     : "opacity-0"
                 }`}
               >
@@ -122,7 +129,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
 
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-sm font-medium">
-                Telefone <span className="text-red-500">*</span>
+                Telefone <span className="text-red-400">*</span>
               </Label>
               <Field name="phone">
                 {({ field, form }: FieldProps) => (
@@ -142,7 +149,7 @@ export const FormComponent = ({ onValuesChange }: FormComponentProps) => {
               <p
                 className={`text-sm text-left mt-1 transition-all duration-300 h-5 ${
                   errors.phone && touched.phone
-                    ? "text-red-500 opacity-100"
+                    ? "text-red-400 opacity-100"
                     : "opacity-0"
                 }`}
               >

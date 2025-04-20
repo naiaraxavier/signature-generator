@@ -1,14 +1,23 @@
-import { CodeXml, Copy, Download, Eye } from "lucide-react";
-import { FormValues } from "@/lib/interfaces/form-values";
-import { generateSignatureHTML } from "@/lib/signature-html";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "../ui/button";
+//* Next and React
 import { useRef, useState } from "react";
 
+//* Lib
+import { FormValues } from "@/lib/interfaces/form-values";
+import { generateSignatureHTML } from "@/lib/signature-html";
+
+// * Icons
+import { CodeXml, Copy, Download, Eye } from "lucide-react";
+
+// * Components
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+// * Interface
 interface PreviewComponentProps {
   values: FormValues;
 }
 
+// Component
 export const PreviewComponent = ({ values }: PreviewComponentProps) => {
   const [copied, setCopied] = useState(false);
 
@@ -16,6 +25,7 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
 
   const previewRef = useRef<HTMLDivElement>(null);
 
+  // Copy the HTML content to clipboard
   const handleCopy = () => {
     if (previewRef.current) {
       const html = previewRef.current.innerHTML;
@@ -34,6 +44,7 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
     }
   };
 
+  // Download the HTML content as a file
   const handleDownload = () => {
     const blob = new Blob([signatureHTML], { type: "text/html" });
     const url = URL.createObjectURL(blob);
@@ -58,28 +69,27 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="preview" className="pt-4 pb-4 flex flex-col gap-8 ">
+        <TabsContent value="preview" className="pt-4 pb-4 flex flex-col gap-6 ">
           <div
             ref={previewRef}
             dangerouslySetInnerHTML={{ __html: signatureHTML }}
-            className="bg-white p-6 rounded-md shadow"
-          ></div>
+            className="bg-white p-6 rounded-md shadow max-h-[300px] max-w-full overflow-auto"
+          />
 
           <div className="flex items-center gap-2">
             <Button
-              size="sm"
-              // variant="outline"
+              size="lg"
               onClick={handleCopy}
-              className="flex items-center gap-1"
+              className="h-12 md:w-[160px]"
             >
               <Copy size={16} />
               {copied ? "Copiado!" : "Copiar HTML"}
             </Button>
             <Button
-              size="sm"
-              // variant="outline"
+              size="lg"
+              variant="secondary"
               onClick={handleDownload}
-              className="flex items-center gap-1"
+              className="h-12 md:w-[160px] cursor-pointer"
             >
               <Download size={16} />
               Baixar HTML

@@ -1,13 +1,18 @@
 "use client";
 
+//* React and Next
 import Image from "next/image";
-import { NavUser } from "./nav-user";
 import { useTheme } from "next-themes";
-import { ModeToggle } from "../theme/mode-toggle";
 
+//* Components
+import { NavUser } from "@/components/header/nav-user";
+import { ModeToggle } from "@/components/theme/mode-toggle";
+
+// Component
 export const Header = () => {
   const { resolvedTheme } = useTheme();
 
+  // Get the logo src based on the theme
   const getLogoSrc = () => {
     if (!resolvedTheme) return "/img/logo-dark-header.png";
     return resolvedTheme === "dark"
@@ -16,18 +21,18 @@ export const Header = () => {
   };
 
   return (
-    <header className="flex w-full items-center justify-between p-2 bg-gray-100 dark:bg-black shadow-md">
-      <div className="p-2">
+    <header className="flex w-full items-center justify-between px-4 py-2 bg-gray-100 dark:bg-black shadow-md">
+      <div onClick={() => window.location.reload()} className="cursor-pointer">
         <Image
-          src={getLogoSrc()}
-          alt="Logo Header"
+          priority
           width={150}
           height={150}
-          priority
+          alt="Logo Header"
+          src={getLogoSrc()}
           className="transition-opacity duration-300"
         />
       </div>
-      <div className="flex items-center gap-4 pr-4">
+      <div className="flex items-center gap-4">
         <ModeToggle />
         <NavUser />
       </div>

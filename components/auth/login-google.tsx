@@ -1,7 +1,13 @@
+// * Next
 import Image from "next/image";
-import { Button } from "../ui/button";
+
+// * Lib
 import { signinWithGoogle } from "@/lib/actions/login-google";
 
+// * Components
+import { Button } from "@/components//ui/button";
+
+// Component
 export const LoginGoogle = () => {
   return (
     <>
@@ -9,12 +15,7 @@ export const LoginGoogle = () => {
         action={signinWithGoogle}
         className="flex flex-col items-center gap-2"
       >
-        <Button
-          type="submit"
-          size="lg"
-          // variant="secondary"
-          className="cursor-pointer"
-        >
+        <Button type="submit" size="lg" className="cursor-pointer">
           <Image
             width={25}
             height={25}
@@ -25,7 +26,8 @@ export const LoginGoogle = () => {
           <span className="text-[16px]">Acessar com o Google</span>
         </Button>
         <span className="mt-3 text-[14px]">
-          * Somente colaboradores do AssineID
+          <span className="text-red-400">*</span> Somente colaboradores do
+          AssineID
         </span>
       </form>
     </>
