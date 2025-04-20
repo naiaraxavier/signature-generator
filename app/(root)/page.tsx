@@ -1,13 +1,20 @@
 "use client";
 
-import { Header } from "@/components/header/header";
+// * React and Next
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Loader } from "lucide-react";
-import { useUser } from "@/contexts/user-context";
 import { useRouter } from "next/navigation";
-import { FormWithPreview } from "@/components/body/form-with-preview";
+
+//* Icons
+import { Loader } from "lucide-react";
+
+// * Context
+import { useUser } from "@/contexts/user-context";
+
+// * Components
+import { Header } from "@/components/header/header";
 import { Footer } from "@/components/footer/footer";
+import { FormWithPreview } from "@/components/body/form-with-preview";
 
 const HomePage = () => {
   const { resolvedTheme } = useTheme();
@@ -15,6 +22,7 @@ const HomePage = () => {
   const { user, isLoading } = useUser();
   const router = useRouter();
 
+  // Checks if the user is logged in
   useEffect(() => {
     if (!isLoading && !user) {
       router.push("/auth/signin");

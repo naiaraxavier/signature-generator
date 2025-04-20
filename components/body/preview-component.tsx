@@ -16,25 +16,21 @@ export const PreviewComponent = ({ values }: PreviewComponentProps) => {
 
   const previewRef = useRef<HTMLDivElement>(null);
 
-  // const handleCopy = () => {
-  //   navigator.clipboard.writeText(signatureHTML).then(() => {
-  //     setCopied(true);
-  //     setTimeout(() => setCopied(false), 2000);
-  //   });
-  // };
-
   const handleCopy = () => {
     if (previewRef.current) {
-      const range = document.createRange();
-      range.selectNodeContents(previewRef.current); // Seleciona o conteúdo da div de visualização
-      const selection = window.getSelection();
-      if (selection) {
-        selection.removeAllRanges(); // Remove qualquer seleção anterior
-        selection.addRange(range); // Adiciona a nova seleção
-        document.execCommand("copy"); // Copia a seleção
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000); // Feedback visual
-      }
+      const html = previewRef.current.innerHTML;
+      const blob = new Blob([html], { type: "text/html" });
+      const data = [new ClipboardItem({ "text/html": blob })];
+
+      navigator.clipboard
+        .write(data)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        })
+        .catch((err) => {
+          console.error("Erro ao copiar como HTML:", err);
+        });
     }
   };
 
