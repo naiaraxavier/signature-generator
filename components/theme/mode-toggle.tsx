@@ -19,22 +19,22 @@ export const ModeToggle = () => {
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       >
         <Sun
-          className={`absolute w-5 h-5 text-yellow-800 transition-all duration-500 transform
-          ${
-            theme === "dark"
-              ? "opacity-0 scale-0 rotate-90"
-              : "opacity-100 scale-100 rotate-0"
-          }
-        `}
+          className={`absolute w-5 h-5 text-yellow-500 transition-all duration-500 transform
+    ${
+      theme === "dark"
+        ? "opacity-100 scale-100 rotate-0"
+        : "opacity-0 scale-0 rotate-90"
+    }
+  `}
         />
         <Moon
-          className={`absolute w-5 h-5 text-zinc-200 transition-all duration-500 transform
-          ${
-            theme === "dark"
-              ? "opacity-100 scale-100 rotate-0"
-              : "opacity-0 scale-0 -rotate-90"
-          }
-        `}
+          className={`absolute w-5 h-5 text-gray-950 transition-all duration-500 transform
+    ${
+      theme === "dark"
+        ? "opacity-0 scale-0 -rotate-90"
+        : "opacity-100 scale-100 rotate-0"
+    }
+  `}
         />
       </Button>
     </div>
