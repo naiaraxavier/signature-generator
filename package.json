@@ -1,6 +1,7 @@
 {
   "name": "signature",
   "version": "0.1.0",
+  "homepage": "signature-generator/",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
