@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/public/styles/globals.css";
 // import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { UserProvider } from "@/contexts/user-context";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -26,14 +27,16 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body cz-shortcut-listen="true">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <UserProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </UserProvider>
       </body>
     </html>
   );
