@@ -8,34 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Verifica o repositório
       - uses: actions/checkout@v2
-
-      # Configura a versão do Node.js
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: "18.x"
-
-      # Cache das dependências do Node.js para acelerar o processo
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v3 # Atualizado para v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
-      # Instalar dependências e construir o projeto
       - name: Build web-app
         run: |
           npm ci
           npm run build
-
-      # Deploy para o gh-pages
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out # Diretório gerado pelo comando "next export"
+          publish_dir: ./build
