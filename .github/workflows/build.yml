@@ -20,7 +20,7 @@ jobs:
 
       # Cache das dependências do Node.js para acelerar o processo
       - name: Cache Node.js dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3 # Atualizado para v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
@@ -32,7 +32,7 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm run export
+          npm run export  # Adicionando a exportação estática
 
       # Deploy para o gh-pages
       - name: Deploy to gh-pages
