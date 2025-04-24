@@ -1,4 +1,6 @@
-// * Next
+"use client";
+
+//* Next
 import { useTheme } from "next-themes";
 
 // * Icons
@@ -7,7 +9,6 @@ import { Moon, Sun } from "lucide-react";
 // * Components
 import { Button } from "@/components/ui/button";
 
-// Component
 export const ModeToggle = () => {
   const { setTheme, theme } = useTheme();
 
@@ -15,27 +16,11 @@ export const ModeToggle = () => {
     <div className="flex items-center gap-6">
       <Button
         variant="ghost"
-        className=" relative w-10 h-10 flex items-center justify-center overflow-hidden p-0 cursor-pointer rounded-full transition-all duration-500 hover:bg-gray-200 dark:hover:bg-gray-700"
+        className="relative w-10 h-10 flex items-center justify-center overflow-hidden p-0 cursor-pointer rounded-full transition-all duration-500 hover:bg-gray-200 dark:hover:bg-gray-700"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       >
-        <Sun
-          className={`absolute w-5 h-5 text-yellow-500 transition-all duration-500 transform
-    ${
-      theme === "dark"
-        ? "opacity-100 scale-100 rotate-0"
-        : "opacity-0 scale-0 rotate-90"
-    }
-  `}
-        />
-        <Moon
-          className={`absolute w-5 h-5 text-gray-950 transition-all duration-500 transform
-    ${
-      theme === "dark"
-        ? "opacity-0 scale-0 -rotate-90"
-        : "opacity-100 scale-100 rotate-0"
-    }
-  `}
-        />
+        <Sun className="absolute rotate-90 scale-0 opacity-0 transition-all duration-300 ease-in-out dark:rotate-0 dark:scale-100 dark:opacity-100" />
+        <Moon className="absolute transition-all duration-300 ease-in-out dark:-rotate-90 dark:scale-0 dark:opacity-0" />
       </Button>
     </div>
   );
